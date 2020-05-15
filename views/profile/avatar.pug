@@ -1,0 +1,9 @@
+extends ../layouts/common
+
+block content
+  .container.mt-5
+      img(src= user.avatarUrl, width='128', height='128', style="border-radius: 50%;")
+  form.ml-3.mt-5(action=`/profile/avatar` method="post", style="width: 15rem;", enctype="multipart/form-data")
+    .form-group
+      input.form-control-file(type='file', name="avatarUrl")
+    button.btn.btn-primary Update

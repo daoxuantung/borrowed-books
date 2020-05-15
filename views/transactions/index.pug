@@ -1,0 +1,20 @@
+extends ../layouts/common
+
+block content
+  h1.title Transactions
+
+  table.table.ml-3.mt-3
+    thead
+      tr
+        th(scope='col') ID Transaction
+        th(scope='col') Book
+        th(scope='col') Status
+    tbody
+      each transaction in transactions
+        tr
+          td= transaction._id
+          td= transaction.book
+          td= transaction.isComplete
+
+
+

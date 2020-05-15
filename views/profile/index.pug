@@ -1,0 +1,19 @@
+extends ../layouts/common
+
+block content
+  h1.title Profile
+  
+  form.ml-3.mt-3(method="post", style="width: 15rem")
+    .form-group.py-3(style="text-align: center;")
+      img(src= user.avatarUrl, width='128', height='128', style="border-radius: 50%;")
+      a.mt-3.btn.btn-primary(href=`profile/avatar`) Update avatar
+    .form-group
+      label(for='name') Name
+      input#name.form-control(type='text', name="name", value= user.name, disabled)
+    .form-group
+      label(for='phone') Phone
+      input#phone.form-control(type='text',name="phone", value= user.phone, disabled)
+    .form-group
+      label(for='email') Email
+      input#email.form-control(type='text',name="email", value= user.email, disabled)
+    a.btn.btn-primary(href=`/profile/edit`) Edit

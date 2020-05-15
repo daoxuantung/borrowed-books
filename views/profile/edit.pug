@@ -1,0 +1,16 @@
+extends ../layouts/common
+
+block content
+  h1(style="margin-top: 5rem; margin-left: 1rem;") Edit profile
+  
+  form.ml-3.mt-3(action=`/profile/edit`, method="post", style="width: 15rem;")
+    .form-group
+      label(for='name') Name
+      input#name.form-control(type='text', name="name", placeholder= user.name)
+    .form-group
+      label(for='phone') Phone
+      input#phone.form-control(type='text', name="phone", placeholder= user.phone)
+    .form-group
+      label(for='email') Email
+      input#email.form-control(type='text', name="email", placeholder= user.email)
+    button.btn.btn-primary(type='submit') Edit

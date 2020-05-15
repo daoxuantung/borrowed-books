@@ -1,0 +1,45 @@
+extends ../layouts/common
+
+block content
+  h1.title Books
+    if user && user.isAdmin
+      span
+          a.btn.btn-primary.m-2.pt-2(href="books/add") New
+  .container(style="display: flex; justify-content: flex-end;")
+    form(action="/books", method="GET", style="width: 20rem")
+      .form-group
+        .input-group
+          input.form-control(type='text', name= "q", placeholder="Search book ...")
+          .input-group-append
+            button.btn.btn-primary(type='submit') Search
+  .container
+    .row        
+      each book in books
+        .col.col-md-4.col-sm-6.book-card
+          .card(style='width: 18rem; height: 100%;')
+            img.card-img-top(src= book.coverUrl, alt='Card image cap')
+            .card-body
+              h5#title.card-title= book.title
+              p.card-text(style= 'height: 50px;')= book.description
+              a.addToCartBtn.btn.btn-primary(href=`/carts/add/${book._id}`) Add to cart
+  section
+    nav.m-auto
+      ul.pagination
+        li.page-item
+          a.page-link(href=`books?page=${page - 1}`, aria-label='Previous')
+            span(aria-hidden='true') &laquo;
+            span.sr-only Previous
+        li.page-item
+          a.page-link(href='books?page=1')
+            | 1
+            span.sr-only (current)
+        li.page-item
+          a.page-link(href='books?page=2') 2
+        li.page-item
+          a.page-link(href='books?page=3') 3
+        li.page-item
+          a.page-link(href=`books?page=${page - 1}`, aria-label='Next')
+            span(aria-hidden='true') &raquo;
+            span.sr-only Next
+  block script
+    script(src='scripts/main.js')

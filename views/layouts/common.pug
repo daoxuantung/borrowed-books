@@ -1,0 +1,59 @@
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css")
+    link(rel="stylesheet", href="/styles/custom.css")
+    link(rel="icon" type="image/png" href="https://cdn.glitch.com/76eb7ae0-ae98-4620-949c-4446601d134b%2Ffavicon.png?v=1587799535222")
+    script(src='https://kit.fontawesome.com/14017c2bfa.js', crossorigin='anonymous')
+    style.
+      @media screen and (max-width: 992px) {
+        .navbar-brand--margin {
+          margin-left: 3rem;
+        }
+      }
+  body
+    header.header
+      .container-fluid.p-0
+        .container
+          nav.navbar.navbar-expand-lg.navbar-light
+            a.navbar-brand.navbar-brand--margin(href='/') LePis
+            button.navbar-toggler(style="position: absolute; left: 0;", type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+              span.navbar-toggler-icon
+            #navbarSupportedContent.collapse.navbar-collapse
+              ul.navbar-nav.mr-auto
+                li.nav-item
+                  a.nav-link(href='/books') Books
+                li.nav-item
+                  a.nav-link(href='/transactions') Transactions
+            .cart
+              a.navbar-brand.cart-link(href='/carts')
+                i.fas.fa-shopping-cart
+                if count
+                  span.cart-number= count
+                else 
+                  span.cart-number 0
+              .cart-form
+                if !carts
+                  .cart-content Không có sách nào.
+                else
+                  if !carts.length
+                     .cart-content Không có sách nào.
+                  else
+                    each cart in carts
+                      .cart-tag
+                        .cart-tag-img
+                          img.cart-tag-img(src= cart.coverUrl)
+                        .cart-tag-title= cart.bookTitle
+                        .cart-tag-number= 'x ' + cart.amount
+                          a.btn(href=`/carts/delete/${cart.id}`) Delete
+                    form.form-inline(method="post", action="/transactions/create")
+                      button.btn.btn-primary.cart-button(type="submit") Transaction
+            form.form-inline.my-2
+              a.navbar-brand(href='/profile')
+                if user
+                  img(src= user.avatarUrl, width='30', height='30', style="border-radius: 50%;")
+                else
+                  img(src='https://pngimage.net/wp-content/uploads/2018/05/default-user-profile-image-png-7.png', width='30', height='30', style="border-radius: 50%; border: 1px solid #DDD;")
+    .container
+      block content
