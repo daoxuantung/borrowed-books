@@ -22,24 +22,5 @@ block content
               h5#title.card-title= book.title
               p.card-text(style= 'height: 50px;')= book.description
               a.addToCartBtn.btn.btn-primary(href=`/carts/add/${book._id}`) Add to cart
-  section
-    nav.m-auto
-      ul.pagination
-        li.page-item
-          a.page-link(href=`books?page=${page - 1}`, aria-label='Previous')
-            span(aria-hidden='true') &laquo;
-            span.sr-only Previous
-        li.page-item
-          a.page-link(href='books?page=1')
-            | 1
-            span.sr-only (current)
-        li.page-item
-          a.page-link(href='books?page=2') 2
-        li.page-item
-          a.page-link(href='books?page=3') 3
-        li.page-item
-          a.page-link(href=`books?page=${page - 1}`, aria-label='Next')
-            span(aria-hidden='true') &raquo;
-            span.sr-only Next
   block script
     script(src='scripts/main.js')

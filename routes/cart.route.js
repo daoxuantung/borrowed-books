@@ -10,6 +10,4 @@ router.get('/add/:id', controller.addToCart);
 
 router.get('/delete/:id', controller.deleteItem);
 
-router.post('/create', controller.createTransaction);
-
 module.exports = router;
