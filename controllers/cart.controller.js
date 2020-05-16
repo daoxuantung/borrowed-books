@@ -53,20 +53,6 @@ module.exports.deleteItem = async (req, res) => {
   }
 };
 
-module.exports.createTransaction = async (req, res) => {
-  var items = req.session.Carts;
-
-  for (var item of items) {
-    var transaction = {
-      user: req.session.User.name,
-      book: item.bookTitle,
-      isComplete: false
-    }
-    console.log(item);
-  }
-
-};
-
 function containsObject(cart, carts) {
   for (var i = 0; i < carts.length; i++) {
       if (carts[i].id === cart.id) {
