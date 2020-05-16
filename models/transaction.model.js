@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var transactionSchema = new mongoose.Schema({
 	user: String,
 	book: String,
-    isComplete: Boolean
+  isComplete: Boolean
 });
 
 var Transaciton = mongoose.model('Transaciton', transactionSchema, 'transactions');
