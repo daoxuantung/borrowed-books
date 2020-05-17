@@ -12,7 +12,7 @@ mongoose.connect(process.env.MONGO_URL, {
 	useUnifiedTopology: true
 }, function(err) {
 	if(err) {
-		throw(err);
+		throw Error(err);
 	}
 
 	console.log('Collect Successfully!');
@@ -54,6 +54,15 @@ app.use('/profile', authMiddleware, profileRouter);
 app.use('/carts', cartRouter);
 app.use('/api/transactions', apiTransactionRouter);
 app.use('/api', apiAuthRouter);
+
+app.use(function(req, res, next){
+  res.status(404);
+
+  if (req.accepts('html')) {
+    res.render('errors/404');
+    return;
+  }
+});
 
 app.listen(process.env.PORT, () => {
   console.log("Server listening on port " + process.env.PORT);
