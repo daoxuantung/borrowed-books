@@ -14,8 +14,7 @@ module.exports.postLogin = (req, res) => {
 
   bcrypt.compare(req.body.password, user.password, function(err, result) {
     if (!result) {
-      res.json(errors: {
-        'Wrong password. Try again!'});
+      res.json('Wrong password. Try again!');
       return;
     }
     req.session.User = user;
