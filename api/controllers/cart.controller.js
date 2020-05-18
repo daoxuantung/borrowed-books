@@ -1,4 +1,4 @@
-var Book = require('../models/book.model');
+var Book = require('../../models/book.model');
 
 module.exports.index = async (req, res) => {
   res.json(req.session.Carts);

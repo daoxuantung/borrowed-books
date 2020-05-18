@@ -62,3 +62,9 @@ module.exports.postAvatar = async (req, res) => {
     // res.redirect("/profile");
   });
 };
+
+module.exports.postLogout = async (req, res) => {
+  req.session.destroy();
+
+  res.redirect("/login");
+};

@@ -1,0 +1,25 @@
+extends ../layouts/common
+
+block content
+  h1.title Storage books
+    if user 
+      span
+        a.btn.btn-primary.m-2.pt-2(href="storage/add") New
+
+  table.table.ml-3.mt-3
+    thead
+      tr
+        th(scope='col') ID 
+        th(scope='col') Book
+        th(scope='col') Description
+        th(scope='col') Action
+    tbody
+      each book in books
+        tr
+          td= book._id
+          td= book.title
+          td= book.description
+          td
+            a.btn.btn-primary.m-2.pt-2(href=`storage/edit/${book._id}`) Edit
+            form(method="POST", action=`storage/delete/${book._id}`, style="display: inline-block;")
+              button.btn.btn-primary.m-2.pt-2(type="submit") Delete

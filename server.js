@@ -24,8 +24,8 @@ var authRouter = require('./routes/auth.route');
 var transactionRouter = require('./routes/transaction.route');
 var profileRouter = require('./routes/profile.route');
 var cartRouter = require('./routes/cart.route');
+var storageRouter = require('./routes/storage.route');
 var apiTransactionRouter = require('./api/routes/transaction.route');
-var apiAuthRouter = require('./api/routes/auth.route');
 
 var authMiddleware = require('./middlewares/auth.middleware');
 
@@ -52,17 +52,20 @@ app.use('/', authRouter);
 app.use('/transactions', authMiddleware, transactionRouter);
 app.use('/profile', authMiddleware, profileRouter);
 app.use('/carts', cartRouter);
+app.use('/storage', authMiddleware, storageRouter);
 app.use('/api/transactions', apiTransactionRouter);
-app.use('/api', apiAuthRouter);
 
-app.use(function(req, res, next){
-  res.status(404);
 
-  if (req.accepts('html')) {
-    res.render('errors/404');
-    return;
-  }
-});
+// app.use(function(req, res, next){
+//   res.status(404);
+
+//   if (req.accepts('html')) {
+//     res.render('errors/404');
+//     return;
+//   }
+
+//   next();
+// });
 
 app.listen(process.env.PORT, () => {
   console.log("Server listening on port " + process.env.PORT);

@@ -232,3 +232,38 @@ body {
   color: #000;
   text-decoration: none; 
 }
+
+.form-inline img {
+  cursor: pointer;
+}
+
+.container .form-inline {
+  position: relative;
+}
+
+.form-inline .form-action {
+  padding: 1rem;
+  border: 1px solid #DDD;
+  background: #FFF;
+  position: absolute;
+  top: 154%;
+  left: -333%;
+  display: none;
+}
+
+.form-actived {
+  display: block !important;
+}
+
+.form-inline .form-action a {
+  font-size: 1rem;
+  color: #0064bc;
+}
+
+.form-inline .form-action a:hover {
+  color: #0064bc;
+}
+
+.form-inline .form-action .form-action-name {
+  font-weight: 600;
+}

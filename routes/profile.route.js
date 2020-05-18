@@ -19,4 +19,6 @@ router.get("/avatar", controller.getAvatar);
 
 router.post("/avatar", upload.single('avatarUrl'), controller.postAvatar);
 
+router.post("/logout", controller.postLogout);
+
 module.exports = router;

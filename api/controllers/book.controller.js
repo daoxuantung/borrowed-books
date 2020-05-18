@@ -12,7 +12,6 @@ module.exports = async function(req, res) {
     res.json(matchedBooks);
     return;
   }
-  var a; a.b();
   
   res.json(books);
 };
